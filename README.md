@@ -1,4 +1,4 @@
-# ***System Modeling***
+# ***Note Task***
 
 ##
 
@@ -6,8 +6,6 @@
 
  1- Baixar uma IDE associada ao Python. Aconselha- se baixar o Pycharm. 
         
-            As recomendações estão em um arquivo.pdf "Run_code <pt-br>
-----------
 ### **Criação de um ambiente virtual (não é necessário caso esteja fazendo um clone deste terminal)**
 
 Prompt do Anaconda:
