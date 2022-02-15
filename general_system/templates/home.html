@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block bory %}
+    <div class="container mt-3">
+        <div align="center">
+        <h1 style="color: midnightblue"><strong><font size="5">LISTA DE TAREFAS</font></strong></h1>
+        <h2 style="color: darkcyan"><font size="4">Tarefas criadas pela equipe</font></h2>
+        <hr>
+        </div>
+        {% for post in posts %}
+
+            <div class="row border mt-4 p-2 publications">
+                <div class="col col-2">
+                    <div class="image pe-3 "> <img src="{{url_for('static', filename='image_id_user/{}'.format(post.autor.perf_photo))}}" class="rounded" width="170"> </div>
+                    <strong>{{ post.autor.username }}</strong>
+
+
+                </div>
+                <div class="col col-9">
+                    <a style="text-decoration: none" href="{{ url_for('expose_post', post_id=post.id) }}">
+                        <h3>
+                            <strong> <font size="4">{{ post.title }}</font></strong>
+                            <small class="text-muted" style="font-size: 15px">
+                            {{ post.date_create.strftime('%d / %m / %Y')}}
+                            </small>
+                        </h3>
+                    </a>
+                    <p>Status: {{ post.status }}</p>
+                    <p>{{ post.bory_text }}</p>
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}

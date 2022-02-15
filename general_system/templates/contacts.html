@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block bory %}
+    <div class="container mt-3">
+        <h1 style="color: darkslategray"><strong><font size="5">Conheça a Engenharia Computacional</font></strong></h1>
+        <h2 style="color: black"><font size="4">Principais contatos:</font></h2>
+        <h3><font size="2">
+            Email: engenharia_computacional@ufjf.br
+            <p>Telefone: (32) 99999-9999</p>
+            <p>Coordenação: Prof. Elson Magalhães Toledo e Prof. Ruy Freitas Reis</p>
+            <p>TEA: Claudio Abel Franco de Assis</p>
+        </font></h3>
+    </div>
+
+    <div class="container mt-3">
+        <hr>
+        <h1 style="color: skyblue"><strong><font size="5">Principais atividades</font></strong></h1>
+        <h2 style="color: black"><font size="3">O curso fornece o GET, Pós em Modelagem Computacional, Semana da Computação</font></h2>
+        <figure class="figure mt-3">
+
+          <img src="{{url_for('static', filename='image_disclosure/semana_comp.png')}}" class="figure-img img-fluid rounded MT-5">
+          <figcaption class="figure-caption">Semana da computação em conjunto com o DCC</figcaption>
+
+          <img src="{{url_for('static', filename='image_disclosure/get_comp.png')}}" class="figure-img img-fluid rounded mt-5">
+          <figcaption class="figure-caption">Grupo de educação tutorial da Engenharia Computacional- UFJF.</figcaption>
+
+
+        </figure>
+    </div>
+
+
+
+{% endblock %}

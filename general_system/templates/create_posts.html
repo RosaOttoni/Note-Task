@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block bory %}
+
+    <div class="container">
+        <div align="center">
+        <h1 style="color: midnightblue"><strong><font size="5">NOVA TAREFA</font></strong></h1>
+        <h2 style="color: darkcyan"><font size="4">Detalhe ao máximo a descrição de sua tarefa</font></h2>
+        <hr>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="" class="border p-4 mt-2">
+                    {{ form_post.csrf_token }}
+                    <legend><strong>Criar Tarefa</strong></legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ form_post.title.label(class="form-control-label") }}
+                            {% if form_post.title.errors %}
+                                {{ form_post.title(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form_post.title.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_post.title(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form_post.date.label(class="form-control-label") }}
+                            {% if form_post.date.errors %}
+                                {{ form_post.date(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form_post.date.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_post.date(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form_post.status.label(class="form-control-label") }}
+                            {% if form_post.status.errors %}
+                                {{ form_post.status(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form_post.status.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_post.status(class="form-control") }}
+                            {% endif %}
+                        </div>
+                         <div class="form-group">
+                            {{ form_post.bory_text.label(class="form-control-label") }}
+                            {% if form_post.bory_text.errors %}
+                                {{ form_post.bory_text(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form_post.bory_text.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_post.bory_text(class="form-control") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    {{ form_post.button_submit_create_post(class="btn btn-secondary btn-sm mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

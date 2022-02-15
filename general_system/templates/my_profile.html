@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block bory %}
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="card p-3">
+            <div class="d-flex align-items-center">
+                <div class="image pe-3"> <img src="{{image_id}}" class="rounded" width="170"> </div>
+                <div class="ml-3 w-100">
+                    <h4 class="mb-0 mt-0"><font size="3">{{current_user.username}}</font></h4> <span><font size="1">{{current_user.email}}</font></span>
+                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+
+                        <div class="d-flex flex-column"> <span class="rating">Tarefas</span> <span class="number3">{{current_user.count_posts()}}</span> </div>
+                    </div>
+                    <div class="button mt-2 d-flex flex-row align-items-center">
+                        <a class="w-100" href="{{ url_for('edit_profile') }}">
+                            <button class="btn btn-sm btn-dark w-100 ml-2">Editar Perfil</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% block form_edit_profile%}
+{% endblock %}
+{% endblock %}

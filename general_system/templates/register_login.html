@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block bory %}
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+        <div align="center">
+        <h1 style="color: cadetblue"><strong><font size="5">Bem-vindo ao Note Task!</font></strong></h1>
+        <h2 ><font size="3">Faça login ou crie uma conta para continuar</font></h2>
+        <hr>
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <form method="POST" action="" class="border p-4 m-5">
+                    {{form_login.csrf_token}}
+                    <legend><strong>Login</strong></legend>
+                    <fieldset>
+
+                        <div class = 'form-group'>
+                            {{form_login.email.label (class="form-control-label")}}
+                            {% if form_login.email.errors %}
+                            {{form_login.email (class="form-control is-invalid mt-0.5 ")}}
+                            <div class="invalid-feedback">
+                                {% for error in form_login.email.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{form_login.email (class="form-control mt-0.5 ")}}
+                            {% endif %}
+                        </div>
+
+
+                        <div class = 'form-group'>
+                            {{form_login.password.label (class="form-control-label")}}
+                            {% if form_login.password.errors %}
+                            {{form_login.password (class="form-control is-invalid mt-0.5 ")}}
+                            <div class="invalid-feedback">
+                                {% for error in form_login.password.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{form_login.password (class="form-control mt-0.5 ")}}
+                            {% endif %}
+
+                        </div>
+                        <div class = 'form-group'>
+                            {{form_login.remember_password.label(class="form-check-label")}}
+                            {{form_login.remember_password(class="form-check-input ")}}
+                        </div>
+                    </fieldset>
+                    {{form_login.button_submit_login (class="btn btn-dark btn-sm mt-2")}}
+                </form>
+            </div>
+
+
+            <div class="col">
+                <form method="POST" action="" class="border p-4 m-5">
+                    {{form_account.csrf_token}}
+                    <legend><strong>Cadastro</strong></legend>
+                    <fieldset>
+
+                        <div class = 'form-group'>
+                            {{form_account.username.label (class="form-control-label")}}
+                            {% if form_account.username.errors %}
+                            {{form_account.username (class="form-control is-invalid mt-0.5 ")}}
+                                {% for error in form_account.username.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            {% else %}
+                                {{form_account.username (class="form-control mt-0.5 ")}}
+                            {% endif %}
+                        </div>
+
+                        <div class = 'form-group'>
+                            {{form_account.email.label (class="form-control-label")}}
+                            {% if form_account.email.errors %}
+                            {{form_account.email (class="form-control is-invalid mt-0.5 ")}}
+                            <div class="invalid-feedback">
+                                {% for error in form_account.email.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{form_account.email (class="form-control mt-0.5 ")}}
+                            {% endif %}
+                        </div>
+
+                        <div class = 'form-group'>
+                            {{form_account.password.label (class="form-control-label")}}
+                            {% if form_account.password.errors %}
+                            {{form_account.password (class="form-control is-invalid mt-0.5 ")}}
+                            <div class="invalid-feedback">
+                                {% for error in form_account.password.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{form_account.password (class="form-control mt-0.5 ")}}
+                            {% endif %}
+                        </div>
+
+                        <div class = 'form-group'>
+                            {{form_account.confirmation_password.label (class="form-control-label")}}
+                            {% if form_account.confirmation_password.errors %}
+                            {{form_account.confirmation_password (class="form-control is-invalid mt-0.5 ")}}
+                            <div class="invalid-feedback">
+                                {% for error in form_account.confirmation_password.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{form_account.confirmation_password (class="form-control mt-0.5 ")}}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    {{form_account.button_submit_account (class="btn btn-secondary btn-sm mt-2")}}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

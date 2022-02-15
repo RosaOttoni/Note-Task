@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block bory %}
+    <div class="container">
+        <div align="center">
+        <h1 style="color: midnightblue"><strong><font size="5">USUÁRIOS CADASTRADOS</font></strong></h1>
+        <hr>
+        </div>
+        {% for user in set_users %}
+            <div class="container mt-5 d-flex justify-content-center">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <div class="image pe-3"> <img src="{{url_for('static', filename='image_id_user/{}'.format(user.perf_photo))}}" class="rounded" width="170"> </div>
+                        <div class="ml-3 w-100">
+                            <h4 class="mb-0 mt-0"><font size="3">{{user.username}}</font></h4> <span><font size="1">{{user.email}}</font></span>
+                            <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                                <div class="d-flex flex-column"> <span class="rating">Tarefas</span> <span class="number3">{{user.count_posts()}}</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+
+
+        {% endfor %}
+    </div>
+
+<div class="row mt-5"> </div>
+{% endblock %}

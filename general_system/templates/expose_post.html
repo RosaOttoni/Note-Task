@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block bory %}
+    <div class="container mt-3">
+        <div class="row border mt-4 p-2 publications">
+            <div class="col col-2">
+                <div class="image pe-3 "> <img src="{{url_for('static', filename='image_id_user/{}'.format(post.autor.perf_photo))}}" class="rounded" width="170"> </div>
+                <strong>{{ post.autor.username }}</strong>
+
+            </div>
+            <div class="col col-9">
+                <h3>
+                    <strong> {{ post.title }}</strong>
+                    <small class="text-muted" style="font-size: 15px">
+                        {{ post.date_create.strftime('%d / %m / %Y')}}
+
+                        {%if form_post %}
+                           -- <a style="text-decoration: none" href="#form_editpost">Editar tarefa</a>
+                            / <a class="text-danger" style="text-decoration: none" href="#" data-bs-toggle="modal" data-bs-target="#DeletePost">Excluir Tarefa</a>
+                        {% endif %}
+                    </small>
+
+                </h3>
+                <p>Status: {{ post.status }}</p>
+                <p>{{ post.bory_text }}</p>
+            </div>
+
+        </div>
+    </div>
+
+{% if form_post %}
+
+    <div class="container" field_form>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="" id= 'form_editpost' class="border p-4 mt-2">
+                    {{ form_post.csrf_token }}
+                    <legend><strong>Editar Tarefa</strong></legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ form_post.title.label(class="form-control-label") }}
+                            {% if form_post.title.errors %}
+                                {{ form_post.title(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form_post.title.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_post.title(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form_post.date.label(class="form-control-label") }}
+                            {% if form_post.date.errors %}
+                                {{ form_post.date(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form_post.date.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_post.date(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form_post.status.label(class="form-control-label") }}
+                            {% if form_post.status.errors %}
+                                {{ form_post.status(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form_post.status.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_post.status(class="form-control") }}
+                            {% endif %}
+                        </div>
+                         <div class="form-group">
+                            {{ form_post.bory_text.label(class="form-control-label") }}
+                            {% if form_post.bory_text.errors %}
+                                {{ form_post.bory_text(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form_post.bory_text.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_post.bory_text(class="form-control") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    {{ form_post.button_submit_create_post(class="btn btn-secondary btn-sm mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+
+
+<!-- Modal -->
+<div class="modal fade" id="DeletePost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Tarefa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Deseja realmente excluir esta tarefa? Tal ação não pode ser desfeita!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+          <form method="POST" action="{{ url_for('delete_post', post_id=post.id) }}">
+            <button type="submit" class="btn btn-danger">Excluir Tarefa</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

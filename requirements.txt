@@ -1,0 +1,9 @@
+flask==2.0.2
+flask_sqlalchemy
+flask_wtf
+email_validator
+wtforms
+flask-bcrypt
+flask_login
+Pillow
+gunicorn
